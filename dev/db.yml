@@ -26,3 +26,14 @@ spec:
         - name: nfs-volume
           persistentVolumeClaim:
             claimName: nfs-db-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-db
+spec:
+  selector:
+    app: db
+  ports:
+    - port: 3004
+      targetPort: 3004
