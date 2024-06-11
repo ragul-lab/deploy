@@ -11,7 +11,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   nfs:
     path: /streamer/library
-    server: 192.168.199.129
+    server: 192.168.199.130
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
