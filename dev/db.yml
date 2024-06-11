@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-db
+  labels:
+    app: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+        - name: db
+          image: 192.168.199.128:8000/db:v1
+          ports:
+            - containerPort: 3004
+          volumeMounts:
+            - name: nfs-volume
+              mountPath: /streamer/entries
+      volumes:
+        - name: nfs-volume
+          persistentVolumeClaim:
+            claimName: nfs-db-pvc
