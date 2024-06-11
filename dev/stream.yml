@@ -17,11 +17,11 @@ spec:
       containers:
         - name: stream
           image: 192.168.199.128:8000/stream:v1
-          port:
+          ports:
             - containerPort: 3001
           volumeMounts:
             - name: nfs-volume
-              mountPath:  /streamer/library
+              mountPath: /streamer/library
       volumes:
         - name: nfs-volume
           persistentVolumeClaim:
