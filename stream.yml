@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stream
+  labels:
+    app: stream
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stream
+  template:
+    metadata:
+      labels:
+        app: stream
+    spec:
+      containers:
+        - name: stream
+          image: 192.168.199.128:8000/stream:v1
+          port:
+            - containerPort: 3001
+          volumeMounts:
+            - name: nfs-volume
+              mountPath:  /streamer/library
+      volumes:
+        - name: nfs-volume
+          persistentVolumeClaim:
+            claimName: nfs-media-pvc
