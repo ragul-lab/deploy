@@ -10,10 +10,9 @@ spec:
     storage: 2Gi
   volumeMode: Filesystem
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   mountOptions:
-    - hard
     - nfsvers=4.1
   nfs:
     path: /streamer/library
@@ -24,6 +23,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: nfs-media-pvc
 spec:
+  storageClassName: nfs-storage
   accessModes:
     - ReadWriteMany
   resources:

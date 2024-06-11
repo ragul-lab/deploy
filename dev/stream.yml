@@ -21,7 +21,7 @@ spec:
             - containerPort: 3001
           volumeMounts:
             - name: nfs-volume
-              mountPath: /streamer/library
+              mountPath: /streamer/api/library
       volumes:
         - name: nfs-volume
           persistentVolumeClaim:
