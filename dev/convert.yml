@@ -1,29 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploy-upload
+  name: deploy-convert
   labels:
-    app: upload
+    app: convert
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: upload
+      app: convert
   template:
     metadata:
       labels:
-        app: upload
+        app: convert
     spec:
       containers:
-        - name: upload
-          image: 192.168.199.128:8000/upload:v1
-          env:
-            - name: dbpoint
-              value: svc-db.default.svc.cluster.local:3004
-            - name: endpoint
-              value: svc-convert.default.svc.cluster.local:5000
+        - name: convert
+          image: 192.168.199.128:8000/convert:v1
           ports:
-            - containerPort: 3002
+            - containerPort: 5000
           volumeMounts:
             - name: nfs-volume
               mountPath: /streamer/library
@@ -35,12 +30,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc-upload
+  name: svc-convert
 spec:
   type: NodePort
   selector:
-    app: upload
+    app: convert
   ports:
-    - port: 3002
-      targetPort: 3002
-      nodePort: 30002
+    - port: 5000
+      targetPort: 5000
+      nodePort: 30003
