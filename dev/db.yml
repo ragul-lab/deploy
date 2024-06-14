@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: db
-          image: 192.168.199.128:8000/db:v1
+          image: 192.168.92.128:8000/db:v1
           ports:
             - containerPort: 3004
           volumeMounts:
