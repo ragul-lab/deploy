@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: stream
-          image: 192.168.199.128:8000/stream:v1
+          image: 192.168.92.128:8000/stream:v1
           env:
             - name: dbpoint
               value: svc-db.default.svc.cluster.local:3004
