@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: convert
-          image: 192.168.199.128:8000/convert:v1
+          image: 192.168.92.128:8000/convert:v1
           ports:
             - containerPort: 5000
           volumeMounts:
